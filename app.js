@@ -4,7 +4,7 @@ var PORT = 3000;
 
 app.get('/about', function(req, res){
 
-	res.send('<h1>This is a new site</h1>')
+	res.send('<h1>This is a new site!</h1>')
 
 
 });
