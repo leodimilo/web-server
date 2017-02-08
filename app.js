@@ -2,9 +2,21 @@ var express = require('express');
 var app = express();
 var PORT = 3000;
 
-app.get('/about', function(req, res){
+var middleware = {
+	requireAuth: function(req, res, next){
+		console.log("private route hit!");
+		next();
+	},
+	logger: function(req, res, next){
+		console.log(new Date()toString()+ " Request: "+ req.method + " "+ req.url)
+	}
+}
 
-	res.send('<h1>This is a new site!</h1>')
+
+
+app.get('/about',middleware.requireAuth, function(req, res){
+
+	res.send('<h1>This is the About Page!</h1>')
 
 
 });
