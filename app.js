@@ -2,7 +2,10 @@ var express = require('express');
 var app = express();
 var PORT = 3000;
 
-var middleware = require('./middleware.js')
+var middleware = require('./middleware.js');
+
+app.use(middleware.logger);
+
 app.get('/about',middleware.requireAuth, function(req, res){
 	res.send('<h1>This is the About Page!</h1>')
 });
